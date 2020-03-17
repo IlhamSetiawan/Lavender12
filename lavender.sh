@@ -21,7 +21,8 @@ echo -e $purple"   **********@************    $green   ┬  ┌─┐┬  ┬┌
 echo -e $purple"  ***********@@****@@*****    $green   │  ├─┤└┐┌┘├┤ │││ ││├┤ ├┬┘  ├┴┐│ │││   ││└─┐ └─┐├─┤        " 
 echo -e $purple"  *****(********@@@@******    $green   ┴─┘┴ ┴ └┘ └─┘┘└┘─┴┘└─┘┴└─  └─┘└─┘┴┴─┘─┴┘└─┘o└─┘┴ ┴        "
 echo -e $purple"  *****@@@/****@@@@*******    $cyan  ==========================================================  "
-echo -e $purple"  ******@@@@@@*@**********    $red        *automatic package removal and installation*           "                                                            
+echo -e $purple"  ******@@@@@@*@**********    $red        *
+*           "                                                            
 echo -e $purple"  ******&@@@@@@@**********    $blue       Author : Dev Tealinux 12                               "
 echo -e $purple"  ********@@@@@@**********    $blue       Visit  : Doscom.org | Tealinuxos.org                   "  
 echo -e $purple"  ***********%@@**********                                                                       " 
@@ -30,15 +31,14 @@ echo -e $purple"    **********%********                                         
 echo -e $purple"         ***********                                                                             "
 
 
-echo "iki ngapus aksesoris ra jelas"
+echo "menghapus aksesoris tidak terpakai"
 apt remove goldendict -y &&
-apt remove gnote -y &&
 apt remove yelp -y &&
 apt remove khmerconverter -y &&
 apt remove debian-reference-common -y &&
 
 
-echo " ngapus game"
+echo " menghapus game"
  apt remove gnome-robots -y &&
  apt remove gnome-chess -y &&
  apt remove aisleriot -y &&
@@ -68,7 +68,7 @@ echo " ngapus game"
  apt remove --auto-remove firefox-esr
 
 
- echo "iki ngapus  audio"
+ echo "menghapus paket  audio"
  apt remove totem -y &&
  apt remove brasero -y &&
  apt remove cheese -y &&
@@ -77,7 +77,7 @@ echo " ngapus game"
 
 
  
-echo "ngapus terminal ra jelas + fctrix"
+echo "menghapus thai term + fctrix"
  apt remove fcitx -y &&
  apt remove fcitx-bin -y &&
  apt remove fcitx-data -y &&
@@ -109,16 +109,32 @@ echo "fix tidak bisa menambahkan ppa,etc"
 
 apt install software-properties-common wget
 
-echo "install vscodium"
+echo "menambahkan ppa "
+
+echo 'deb http://deb.xanmod.org releases main' | sudo tee /etc/apt/sources.list.d/xanmod-kernel.list && wget -qO - https://dl.xanmod.org/gpg.key | sudo apt-key add -
+
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | sudo apt-key add -
+
 echo 'deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main' | sudo tee --append /etc/apt/sources.list.d/vscodium.list
- apt update &&  apt install codium
+
+apt update
+
+echo "install vscodium"
+
+  apt install codium
 
 echo "install vlc"
 apt install vlc
 
 echo "install sayonara"
-wget  https://sayonara-player.com/sw/sayonara_1.5.1-0ppa5-bionic1_amd64.deb ; dpkg -i sayonara_1.5.1-0ppa5-bionic1_amd64.deb
+wget  https://sayonara-player.com/sw/sayonara_1.5.1-0ppa5-bionic1_amd64.deb ; dpkg -i sayonara_1.5.1-0ppa5-bionic1_amd64.deb ; rm  sayonara_1.5.1-0ppa5-bionic1_amd64.deb
+
+
+echo "install custom kernel"
+
+apt install  linux-xanmod
+
+
 
 
 
